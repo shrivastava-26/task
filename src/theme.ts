@@ -14,7 +14,6 @@ export const getDesignTokens = (mode: PaletteMode) =>
     shape: { borderRadius: 14 },
     typography: {
       fontFamily: ["Inter", "system-ui", "Segoe UI", "Roboto"].join(","),
-      h5: { fontWeight: 800 },
       button: { textTransform: "none", fontWeight: 700 },
     },
   });

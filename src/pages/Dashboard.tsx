@@ -58,16 +58,31 @@ export default function Dashboard() {
   }
 
   return (
-    <Box
-      sx={{
-        display: "grid",
-        gridTemplateColumns: { xs: "1fr", md: "320px 1fr" },
-        gap: 2,
-        alignItems: "start",
-      }}
-    >
+   <Box
+  sx={{
+    width: "100%",
+    maxWidth: "100%",
+    display: "grid",
+    gridTemplateColumns: {
+      xs: "minmax(0,1fr)",          // 👈 THIS STOPS OVERFLOW
+      md: "320px minmax(0,1fr)",
+    },
+    gap: 2,
+    alignItems: "start",
+  }}
+>
       {/* LEFT: controls */}
-      <Paper sx={{ p: 2, borderRadius: 4, position: { md: "sticky" }, top: { md: 88 } }}>
+      <Paper
+  sx={{
+    p: 2,
+    borderRadius: 4,
+    width: "100%",
+    minWidth: 0,                 // ✅ IMPORTANT
+    overflow: "hidden",
+    position: { xs: "static", md: "sticky" },
+    top: { md: 88 },
+  }}
+>
         <Stack spacing={2}>
           <Box>
             <Typography variant="h5">Control Deck</Typography>
@@ -107,7 +122,15 @@ export default function Dashboard() {
       </Paper>
 
       {/* RIGHT: list */}
-      <Paper sx={{ p: 2, borderRadius: 4 }}>
+      <Paper
+  sx={{
+    p: 2,
+    borderRadius: 4,
+    width: "100%",
+    minWidth: 0,            // ✅ IMPORTANT
+    overflow: "hidden",
+  }}
+>
         <Typography variant="h5" sx={{ mb: 1 }}>
           Task Shelf
         </Typography>

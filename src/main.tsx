@@ -5,10 +5,10 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import App from "./App";
 import { TaskProvider } from "./TaskContext";
 import { getDesignTokens } from "./theme";
-
+import './index.css'
 function Root() {
   const [mode, setMode] = useState<"light" | "dark">(
-    (localStorage.getItem("theme") as "light" | "dark") || "light"
+    (localStorage.getItem("themeMode") as "light" | "dark") || "light"
   );
 
   const theme = useMemo(() => getDesignTokens(mode), [mode]);
@@ -16,7 +16,7 @@ function Root() {
   const toggleTheme = () => {
     const newMode = mode === "light" ? "dark" : "light";
     setMode(newMode);
-    localStorage.setItem("theme", newMode);
+    localStorage.setItem("themeMode", newMode);
   };
 
   return (

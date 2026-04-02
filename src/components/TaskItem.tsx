@@ -21,15 +21,17 @@ function TaskItemBase({
   const navigate = useNavigate();
 
   return (
-    <Paper
-      sx={{
-        p: 1.5,
-        borderRadius: 3,
-        display: "flex",
-        alignItems: "center",
-        gap: 1,
-      }}
-    >
+ <Paper
+  sx={{
+    p: 1.5,
+    borderRadius: 3,
+    display: "flex",
+    alignItems: "center",
+    gap: 1,
+    width: "100%",
+    minWidth: 0,
+  }}
+>
       <IconButton onClick={() => onToggle(task.id)} size="small">
         {task.completed ? (
           <CheckCircleRoundedIcon color="success" fontSize="small" />
@@ -39,21 +41,22 @@ function TaskItemBase({
       </IconButton>
 
       <Box sx={{ flex: 1, minWidth: 0 }}>
-        <Typography
-          onClick={() => navigate(`/task/${task.id}`)}
-          sx={{
-            fontWeight: 800,
-            cursor: "pointer",
-            textDecoration: task.completed ? "line-through" : "none",
-            opacity: task.completed ? 0.65 : 1,
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-          title="Open details"
-        >
-          {task.title}
-        </Typography>
+  <Typography
+  onClick={() => navigate(`/task/${task.id}`)}
+  noWrap
+  sx={{
+    fontWeight: 800,
+    cursor: "pointer",
+    textDecoration: task.completed ? "line-through" : "none",
+    opacity: task.completed ? 0.65 : 1,
+    width: "100%",
+    minWidth: 0,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  }}
+>
+  {task.title}
+</Typography>
         <Typography sx={{ fontSize: 12, opacity: 0.6 }}>#{task.id}</Typography>
       </Box>
 
