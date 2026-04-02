@@ -59,7 +59,13 @@ export default function App({ toggleTheme, mode }: any) {
   );
 
   return (
-    <Box sx={{ minHeight: "100vh", background: bg }}>
+    <Box
+  sx={{
+    height: "100vh",
+    overflow: "hidden",   // ✅ stop full page scroll
+    background: bg,
+  }}
+>
       {/* NAVBAR */}
       <AppBar
         position="sticky"

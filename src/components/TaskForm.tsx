@@ -2,6 +2,24 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Button, Stack, TextField } from "@mui/material";
 import { type Task, useTasks } from "../TaskContext";
 
+
+
+const generateFourDigitId = () => {
+  const existingIds = new Set(
+    JSON.parse(localStorage.getItem("task_pocket_v1") || "[]")
+      .map((t: any) => Number(t.id))
+  );
+
+  let newId: number;
+
+  do {
+    newId = Math.floor(1000 + Math.random() * 9000); // ✅ 1000–9999 only
+  } while (existingIds.has(newId));
+
+  return String(newId);
+};
+
+
 export default function TaskForm({
   editing,
   onCancelEdit,
@@ -36,9 +54,13 @@ export default function TaskForm({
       onCancelEdit();
     } else {
       dispatch({
-        type: "ADD",
-        payload: { id: crypto.randomUUID(), title: v, completed: false },
-      });
+  type: "ADD",
+  payload: {
+    id: generateFourDigitId(),   // ✅ only 4 digit id
+    title: v,
+    completed: false,
+  },
+});
       setTitle("");
       setTouched(false);
     }

@@ -45,7 +45,7 @@ function TaskItemBase({
   onClick={() => navigate(`/task/${task.id}`)}
   noWrap
   sx={{
-    fontWeight: 800,
+    fontWeight: 500,
     cursor: "pointer",
     textDecoration: task.completed ? "line-through" : "none",
     opacity: task.completed ? 0.65 : 1,

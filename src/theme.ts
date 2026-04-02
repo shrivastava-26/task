@@ -13,7 +13,10 @@ export const getDesignTokens = (mode: PaletteMode) =>
     },
     shape: { borderRadius: 14 },
     typography: {
-      fontFamily: ["Inter", "system-ui", "Segoe UI", "Roboto"].join(","),
-      button: { textTransform: "none", fontWeight: 700 },
-    },
+  fontFamily: "'Poppins', sans-serif",
+  button: {
+    textTransform: "none",
+    fontWeight: 600,
+  },
+},
   });
