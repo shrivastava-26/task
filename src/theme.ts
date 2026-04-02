@@ -1,16 +1,20 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, type PaletteMode } from "@mui/material";
 
-export const theme = createTheme({
-  palette: {
-    mode: "light",
-    primary: { main: "#0D6E6E" },    // teal (less common than blue)
-    secondary: { main: "#F25C54" },  // coral
-    background: { default: "#FBF7F2", paper: "#FFFFFF" },
-  },
-  shape: { borderRadius: 14 },
-  typography: {
-    fontFamily: ["Inter", "system-ui", "Segoe UI", "Roboto", "Arial"].join(","),
-    h5: { fontWeight: 800, letterSpacing: "-0.02em" },
-    button: { textTransform: "none", fontWeight: 700 },
-  },
-});
+export const getDesignTokens = (mode: PaletteMode) =>
+  createTheme({
+    palette: {
+      mode,
+      primary: { main: "#0D6E6E" },
+      secondary: { main: "#F25C54" },
+      background:
+        mode === "light"
+          ? { default: "#FBF7F2", paper: "#FFFFFF" }
+          : { default: "#121212", paper: "#1E1E1E" },
+    },
+    shape: { borderRadius: 14 },
+    typography: {
+      fontFamily: ["Inter", "system-ui", "Segoe UI", "Roboto"].join(","),
+      h5: { fontWeight: 800 },
+      button: { textTransform: "none", fontWeight: 700 },
+    },
+  });
